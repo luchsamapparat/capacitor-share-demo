@@ -1,23 +1,18 @@
-import logo from './logo.svg';
+import { Plugins } from '@capacitor/core';
 import './App.css';
+const { Share } = Plugins;
 
 function App() {
+  const doShare = () => Share.share({
+    title: 'See cool stuff',
+    text: 'Really awesome thing you need to see right meow',
+    url: 'http://ionicframework.com/',
+    dialogTitle: 'Share with buddies'
+  });
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={() => doShare()}>SHARE</button>
     </div>
   );
 }
